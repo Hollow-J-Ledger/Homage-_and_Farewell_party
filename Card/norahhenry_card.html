@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=2.0, user-scalable=no">
+    <title>Homage & Farewell Ceremony</title>
+    <style>
+        body {
+            font-family: 'SUNDAY', bold;
+            text-align: center;
+            background-color: #737373;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            width: 60%;
+            margin: auto;
+            padding: 30px;
+            border-radius: 10px;
+            border: 2px solid black;
+            box-shadow: 5px 5px 15px rgba(63, 63, 63, 0.1);
+            position: relative;
+        }
+        .decorative {
+            width: 30%;
+            margin-bottom: 10px;
+        }
+        .header {
+            font-size: 24px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .school-banner {
+            display: inline-block;
+            background: rgb(70, 70, 70);
+            color: white;
+            font-size: 18px;
+            padding: 10px;
+            border-radius: 10px;
+            border-color: rgb(0, 0, 0);
+            position: relative;
+            margin-bottom: 20px;
+            top: 10px; /* Slightly lower the banner by 10px */
+        }
+        .school-banner::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: -40px;
+            width: 80px; /* Adjust width */
+            height: 80px; /* Adjust height */
+            background-image: url('Untitled (1920 x 1920 px) (2).png');
+            background-size: contain; /* Make sure the image fits the element */
+            background-repeat: no-repeat;
+            transform: rotate(-15deg);
+        }
+
+        .logo img {
+            width: 120px;
+            margin: 20px 0;
+        }
+        .content {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .footer {
+            font-size: 14px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+        .floral {
+            content: '';
+            position: absolute;
+            margin-left: -20px;
+            margin-top: -80px;
+            width: 100px; /* Adjust width */
+            height: 100px; /* Adjust height */
+            background-image: url('Untitled (1920 x 1920 px) (3).png');
+            background-size: contain; /* Make sure the image fits the element */
+            background-repeat: no-repeat;
+        }
+        .floral1 {
+            content: '';
+            position: absolute;
+            bottom: 10px; /* Adjust to position in the bottom-right corner */
+            right: 10px; /* Adjust to position in the bottom-right corner */
+            width: 100px; /* Adjust width */
+            height: 100px; /* Adjust height */
+            background-image: url('Untitled (1920 x 1920 px) (3).png');
+            background-size: contain; /* Make sure the image fits the element */
+            background-repeat: no-repeat;
+            transform: scaleX(-1);
+        }
+        .header {
+            position: relative;
+            top: -20px; /* Slightly lower the header by 20px */
+            font-size: 24px;
+            font-weight: bold;
+            color: #333; /* You can adjust the text color as needed */
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="m4a.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <img src="Untitled design (2).png" alt="Top Decorative Element" class="decorative">
+        <div class="header">HOMAGE PAYING & FAREWELL CEREMONY</div>
+        
+        <div class="school-banner">YANGON FEDERAL SCHOOL<br>2024-2025 ACADEMIC YEAR (BATCH 3)</div>
+
+        <div class="logo">
+            <img src="photo_2025-03-08_10-19-25.png" alt="School Logo" style="width: 150px;">
+        </div>
+        
+        <div class="content">
+            <p>ကျွန်တော်/ကျွန်မတို့ရဲ့အခြေခံပညာအထက်တန်းသင်ယူမှုနောက်ဆုံးနှစ်၏ ဂါဝရပြုနှုတ်ဆက်ခြင်းပွဲသို့ ကျွန်တော်/ကျွန်မတို့၏ချစ်လှစွာသော Tr Norah and Henry ကိုလေးစားစွာဖြင့်ဖိတ်ကြားအပ်ပါသည်။ <br></p>
+            
+            <p>JOIN US AS WE HONOUR AND CELEBRATE THE REMARKABLE JOURNEY OF OUR FINAL YEAR AT YANGON FEDERAL SCHOOL, OUR BELOVED TEACHER, "Tr Norah and Henry."<br>
+            TO EXPRESS OUR HEARTFELT GRATITUDE FOR THE WISDOM AND GUIDANCE SHARED DURING THIS UNFORGETTABLE CHAPTER OF THE 2024-2025 SCHOOL YEAR.</p>
+        </div>
+        
+        <div class="footer">
+            click anywhere for music
+            DATE: [INSERT DATE]<br>
+            TIME: [INSERT TIME]<br>
+            VENUE: [INSERT VENUE]
+        </div>
+        
+        <div class="floral"></div>
+        <div class="floral1"></div>
+    </div>
+</body>
+</html>
+<script>
+    document.addEventListener("click", function() {
+        let audio = new Audio("m4a.mp3");
+        audio.loop = true;
+        audio.play();
+    }, { once: true }); // Plays only on the first click
+
+    </script>

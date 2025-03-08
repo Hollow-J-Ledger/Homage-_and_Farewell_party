@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Invitation</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 0;
+            margin: 0;
+            background-image:url('Untitled design (3).gif'); /* Background image */
+            background-size: cover;  /* Cover the entire screen */
+            background-position: center;  /* Keep the image centered */
+            background-attachment: fixed; /* Keeps background fixed during scroll */
+            background-repeat: no-repeat; /* Prevents tiling of the image */
+        }
+
+        .container { 
+            width: 100%;  /* Full width */
+            max-width: 500px; /* Maximum width for the container */
+            height: auto; /* Auto height */
+            margin: auto;
+            padding: 20px;
+        }
+
+        input, button { 
+            width: calc(100% - 20px); 
+            padding: 10px; 
+            margin-top: 10px; 
+            box-sizing: border-box;
+        }
+
+        h2 {
+            color: #000000;
+        }
+
+        p {
+            color: #000000;
+        }
+    </style>
+</head>
+<body>
+    <audio autoplay loop>
+        <source src="file_570.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+    <div class="container">
+        <h2>You're Invited!</h2>
+        <p>Thank you for accepting the Invitation</p>
+        <p>Please enter your name for the next</p>
+        <input type="text" id="name" placeholder="Your Name">
+        <button onclick="rsvp()">Login</button>
+        <p id="response"></p>
+    </div>
+
+    <script>
+        function rsvp() {
+    let name = document.getElementById("name").value.trim();
+    
+    // Mapping of names to specific webpages
+    let guestPages = {
+        "Juicelay": "Card/juicelay_card.html", //check
+        "Tr Hsu": "Card/trhsu_card.html", //check
+        "Tiger": "Card/tiger_card.html", //check
+        "Sayar ACT": "Card/sayaract_card.html", //check
+        "T K": "Card/tk_card.html", //check
+        "Sayar Soe": "Card/sayarsoe_card.html", //check
+        "Tr Zin": "Card/trzin_card.html", //check
+        "Norah and Henry": "Card/norahhenry_card.html", //check
+        "Tr. Latt Latt": "Card/lattlatt_card.html", //check
+        "Art.Tr": "Card/art_tr_card.html", //check
+        "Sayar Wilson": "Card/sayarwilson_card.html", //check
+        "Freedom E1 Students": "Card/freedome1_card.html"
+    };
+
+    if (guestPages[name]) {
+        document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
+        setTimeout(() => {
+            window.location.href = guestPages[name]; // Redirect to the assigned page
+        }, 3000);
+    } else {
+        document.getElementById("response").innerText = "Sorry, your name is not on the guest list. Try with Freedom E1 Students if you are student. Redirecting to the general page...";
+        setTimeout(() => {
+            window.location.href = "Index.html"; // Redirect after 5 seconds
+        }, 5000);
+    }
+}
+document.addEventListener("click", function() {
+        let audio = new Audio("file_570.mp3");
+        audio.loop = true;
+        audio.play();
+        audio.volume = 0.20; // Set volume to 15%
+    }, { once: true }); // Plays only on the first click
+
+    </script>
+</body>
+</html>
