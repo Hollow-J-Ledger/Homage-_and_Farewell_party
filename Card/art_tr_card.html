@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=2.0, user-scalable=no">
     <title>Homage & Farewell Ceremony</title>
     <style>
         body {
@@ -14,7 +13,7 @@
         }
         .container {
             background: white;
-            max-width: 90%;
+            width: 60%;
             margin: auto;
             padding: 30px;
             border-radius: 10px;
@@ -23,8 +22,7 @@
             position: relative;
         }
         .decorative {
-            width: 100%;
-            max-width: 200px;
+            width: 30%;
             margin-bottom: 10px;
         }
         .header {
@@ -43,23 +41,23 @@
             border-color: rgb(0, 0, 0);
             position: relative;
             margin-bottom: 20px;
-            top: 10px;
+            top: 10px; /* Slightly lower the banner by 10px */
         }
         .school-banner::before {
             content: '';
             position: absolute;
             left: -40px;
             top: -40px;
-            width: 80px;
-            height: 80px;
+            width: 80px; /* Adjust width */
+            height: 80px; /* Adjust height */
             background-image: url('Untitled (1920 x 1920 px) (2).png');
-            background-size: contain;
+            background-size: contain; /* Make sure the image fits the element */
             background-repeat: no-repeat;
             transform: rotate(-15deg);
         }
+
         .logo img {
-            width: 100%;
-            max-width: 150px;
+            width: 120px;
             margin: 20px 0;
         }
         .content {
@@ -71,40 +69,35 @@
             margin-top: 20px;
             font-weight: bold;
         }
-        .floral, .floral1 {
+        .floral {
             content: '';
             position: absolute;
-            width: 100px;
-            height: 100px;
-            background-image: url('Untitled (1920 x 1920 px) (3).png');
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-        .floral {
             margin-left: -20px;
             margin-top: -80px;
+            width: 100px; /* Adjust width */
+            height: 100px; /* Adjust height */
+            background-image: url('Untitled (1920 x 1920 px) (3).png');
+            background-size: contain; /* Make sure the image fits the element */
+            background-repeat: no-repeat;
         }
         .floral1 {
-            bottom: 10px;
-            right: 10px;
+            content: '';
+            position: absolute;
+            bottom: 10px; /* Adjust to position in the bottom-right corner */
+            right: 10px; /* Adjust to position in the bottom-right corner */
+            width: 100px; /* Adjust width */
+            height: 100px; /* Adjust height */
+            background-image: url('Untitled (1920 x 1920 px) (3).png');
+            background-size: contain; /* Make sure the image fits the element */
+            background-repeat: no-repeat;
             transform: scaleX(-1);
         }
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-            .header {
-                font-size: 20px;
-            }
-            .school-banner {
-                font-size: 16px;
-            }
-            .content {
-                font-size: 14px;
-            }
-            .footer {
-                font-size: 12px;
-            }
+        .header {
+            position: relative;
+            top: -20px; /* Slightly lower the header by 20px */
+            font-size: 24px;
+            font-weight: bold;
+            color: #333; /* You can adjust the text color as needed */
         }
     </style>
 </head>
@@ -120,7 +113,7 @@
         <div class="school-banner">YANGON FEDERAL SCHOOL<br>2024-2025 ACADEMIC YEAR (BATCH 3)</div>
 
         <div class="logo">
-            <img src="photo_2025-03-08_10-19-25.png" alt="School Logo">
+            <img src="photo_2025-03-08_10-19-25.png" alt="School Logo" style="width: 150px;">
         </div>
         
         <div class="content">
@@ -147,5 +140,6 @@
     let audio = new Audio("m4a.mp3");
     audio.loop = true;
     audio.play();
-}, { once: true });
+}, { once: true }); // Plays only on the first click
+
 </script>
