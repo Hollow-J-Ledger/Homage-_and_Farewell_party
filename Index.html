@@ -10,34 +10,49 @@
             text-align: center; 
             padding: 0;
             margin: 0;
-            background-image:url('Untitled design (3).gif'); /* Background image */
+            background-image: url('Untitled design (3).gif'); /* Background image */
             background-size: cover;  /* Cover the entire screen */
             background-position: center;  /* Keep the image centered */
             background-attachment: fixed; /* Keeps background fixed during scroll */
             background-repeat: no-repeat; /* Prevents tiling of the image */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
         .container { 
-            width: 100%;  /* Full width */
-            max-width: 500px; /* Maximum width for the container */
-            height: auto; /* Auto height */
-            margin: auto;
+            width: 90%; /* Adjust width for mobile */
+            max-width: 400px; /* Maximum width for larger screens */
+            background: rgba(255, 255, 255, 0.9); /* Slight transparency */
             padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
         }
 
         input, button { 
-            width: calc(100% - 20px); 
-            padding: 10px; 
+            width: 100%; /* Full width for mobile */
+            padding: 12px; /* Bigger padding for easier tap */
             margin-top: 10px; 
             box-sizing: border-box;
+            font-size: 16px; /* Bigger text for better readability */
         }
 
-        h2 {
+        h2, p {
             color: #000000;
+            font-size: 18px; /* Adjust text size for mobile */
         }
 
-        p {
-            color: #000000;
+        button {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -46,6 +61,7 @@
         <source src="file_570.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
+    
     <div class="container">
         <h2>You're Invited!</h2>
         <p>Thank you for accepting the Invitation</p>
@@ -57,45 +73,52 @@
 
     <script>
         function rsvp() {
-    let name = document.getElementById("name").value.trim();
-    
-    // Mapping of names to specific webpages
-    let guestPages = {
-        "Juicelay": "Card/juicelay_card.html", //check
-        "Tr Hsu": "Card/trhsu_card.html", //check
-        "Tiger": "Card/tiger_card.html", //check
-        "Sayar ACT": "Card/sayaract_card.html", //check
-        "T K": "Card/tk_card.html", //check
-        "Sayar Soe": "Card/sayarsoe_card.html", //check
-        "Tr Zin": "Card/trzin_card.html", //check
-        "Norah and Henry": "Card/norahhenry_card.html", //check
-        "Tr. Latt Latt": "Card/lattlatt_card.html", //check
-        "Art.Tr": "Card/art_tr_card.html", //check
-        "Sayar Wilson": "Card/sayarwilson_card.html", //check
-        "Freedom E1 Students": "Card/freedome1_card.html", //check
-        "Fang": "Card/my-T-Huk_card.html", //check
-        "T Huk": "Card/my-T-Huk_card.html", //check
-    };
+            let name = document.getElementById("name").value.trim();
+            
+            // Mapping of names to specific webpages
+            let guestPages = {
+                "Juicelay": "Card/juicelay_card.html",
+                "Tr Hsu": "Card/trhsu_card.html",
+                "Tiger": "Card/tiger_card.html",
+                "Sayar ACT": "Card/sayaract_card.html",
+                "T K": "Card/tk_card.html",
+                "Sayar Soe": "Card/sayarsoe_card.html",
+                "Tr Zin": "Card/trzin_card.html",
+                "Norah and Henry": "Card/norahhenry_card.html",
+                "Tr. Latt Latt": "Card/lattlatt_card.html",
+                "Art.Tr": "Card/art_tr_card.html",
+                "Sayar Wilson": "Card/sayarwilson_card.html",
+                "Fang": "Card/my-T-Huk_card.html",
+                "T Huk": "Card/my-T-Huk_card.html"
+            };
 
-    if (guestPages[name]) {
-        document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
-        setTimeout(() => {
-            window.location.href = guestPages[name]; // Redirect to the assigned page
-        }, 3000);
-    } else {
-        document.getElementById("response").innerText = "Sorry, your name is not on the guest list. 'Try with Freedom E1 Students' if you are student. Redirecting to the general page...";
-        setTimeout(() => {
-            window.location.href = "Index.html"; // Redirect after 5 seconds
-        }, 5000);
-    }
-}
-document.addEventListener("click", function() {
-        let audio = new Audio("file_570.mp3");
-        audio.loop = true;
-        audio.play();
-        audio.volume = 0.20; // Set volume to 15%
-    }, { once: true }); // Plays only on the first click
+            let allowedCodes = [];
+            for (let i = 1; i <= 55; i++) {
+                let code = `E-${String(i).padStart(3, '0')}/Freedom(E1)`;
+                allowedCodes.push(code);
+            }
 
+            if (guestPages[name] || allowedCodes.includes(name)) {
+                document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
+                setTimeout(() => {
+                    let page = guestPages[name] || "Card/freedome1_card.html";
+                    window.location.href = page; // Redirect to the assigned page
+                }, 2000);
+            } else {
+                document.getElementById("response").innerText = "Sorry, your name is not on the guest list. Try with Freedom E1 Students if you are a student.";
+                setTimeout(() => {
+                    window.location.href = "Index.html"; // Redirect after 5 seconds
+                }, 5000);
+            }
+        }
+
+        // Ensure audio plays on mobile
+        document.addEventListener("click", function() {
+            let audio = new Audio("file_570.mp3");
+            audio.loop = true;
+            audio.play();
+            audio.volume = 0.20; // Set volume to 20%
+        }, { once: true }); // Plays only on the first click
     </script>
 </body>
 </html>
