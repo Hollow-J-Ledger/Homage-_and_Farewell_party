@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Styled Composition</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Background Image - Fullscreen */
+        .fullscreen-bg {
+            background-image: url('download (1).jpg'); /* Ensure correct file path */
+            background-size: cover;
+            background-position: center;
+            width: 100vw;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* Envelope (Clickable) */
+        .envelope {
+            width: 35%;
+            max-width: 350px;
+            position: absolute;
+            top: 38%;
+            left: 48%;
+            transform: scaleX(-1) rotate(10deg);
+            filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .envelope:hover {
+            transform: rotate(10deg) scale(1.1);
+        }
+
+        /* Bouquet */
+        .bouquet {
+           width: 120%;
+           max-width: 230px;
+           position: absolute;
+           top: 55%;
+           left: 42%;
+           transform: rotate(55deg);
+           filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+        }
+
+        /* Letter (Initially Hidden) */
+        .letter-container {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease-in-out, visibility 0s linear 1s;
+        }
+
+        .letter {
+            width: 90vw; /* Adjust for iPhone X */
+            max-width: 340px;
+        }
+
+        /* Message on Letter */
+        .message {
+            position: absolute;
+            top: 25%; /* Adjusted for iPhone X */
+            left: 10%;
+            width: 80%;
+            font-size: 14px; /* Smaller text for iPhone readability */
+            color: #4A4A4A;
+            font-family: 'Dancing Script', cursive;
+            text-align: left;
+            line-height: 2.2;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1.5s ease-in-out, visibility 0s linear 1.5s;
+        }
+
+        /* Fade-in animation */
+        .fade-in {
+            opacity: 1 !important;
+            visibility: visible !important;
+        }
+
+    </style>
+    <!-- Handwritten Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="fullscreen-bg"></div>
+
+    <img id="envelope" class="envelope" src="the_letter_i_gave_troye___-removebg-preview.png" alt="Envelope">
+    <img class="bouquet" src="Download_premium_png_of_PNG__Bouquet_packaging_mockup_flower_plant_rose_by_beam_about_png__flower__plant__light__and_person_13714567-removebg-preview.png" alt="Bouquet">
+    
+    <div id="letter-container" class="letter-container">
+        <img id="letter" class="letter" src="paper-1763262_640.webp" alt="Letter">
+        <div id="message" class="message">
+            Hello my lovely girl,<br>
+            I would like to invite you to my class farewell party.<br>
+            It will be held on the 25th of this month at 6 PM.<br>
+            I hope you will come and make the party more enjoyable.<br>
+            With love,<br>
+            Your Tu Tu
+        </div>
+    </div>
+    <audio id="background-music" loop>
+      <source src="peach eyes.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+  </audio>
+    
+
+    <script>
+        document.getElementById("envelope").addEventListener("click", function () {
+            setTimeout(function () {
+                document.getElementById("letter-container").classList.add("fade-in");
+            }, 500);
+        });
+
+        document.getElementById("letter").addEventListener("click", function () {
+            setTimeout(function () {
+                document.getElementById("message").classList.add("fade-in");
+            }, 700);
+        });
+
+        // Touch support for iPhone X
+        document.getElementById("envelope").ontouchstart = function () {
+            setTimeout(function () {
+                document.getElementById("letter-container").classList.add("fade-in");
+            }, 500);
+        };
+
+        document.getElementById("letter").ontouchstart = function () {
+            setTimeout(function () {
+                document.getElementById("message").classList.add("fade-in");
+            }, 700);
+        };
+
+        document.getElementById("envelope").addEventListener("click", function () {
+            setTimeout(function () {
+                document.getElementById("letter-container").classList.add("fade-in");
+                document.getElementById("background-music").play();
+            });
+        });
+        
+    </script>
+</body>
+</html>
