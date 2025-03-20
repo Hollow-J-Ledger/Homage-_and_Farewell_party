@@ -98,12 +98,12 @@
 
             let allowedCodes = [];
             for (let i = 1; i <= 55; i++) {
-                let code = `E-${String(i).padStart(3, '0')}/Freedom(E1)`;
+                let code = E-${String(i).padStart(3, '0')}/Freedom(E1);
                 allowedCodes.push(code);
             }
 
             if (guestPages[name] || allowedCodes.includes(name)) {
-                document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
+                document.getElementById("response").innerText = Thank you, ${name}! Your RSVP is confirmed. Redirecting...;
                 setTimeout(() => {
                     let page = guestPages[name] || "Card/freedome1_card.html";
                     window.location.href = page; // Redirect to the assigned page
