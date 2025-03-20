@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Homage & Farewell Ceremony</title>
-        <style>
+    <style>
         body {
             font-family: 'SUNDAY', bold;
             text-align: center;
@@ -93,6 +93,7 @@
     <audio autoplay loop>
         <source src="m4a.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
+    </audio>
     <div class="container">
         <img src="Untitled design (2).png" alt="Top Decorative Element" class="decorative">
         <div class="header">HOMAGE PAYING & FAREWELL CEREMONY</div>
@@ -106,7 +107,7 @@
         <div class="content">
             <p>ကျွန်တော်/ကျွန်မတို့ရဲ့အခြေခံပညာအထက်တန်းသင်ယူမှုနောက်ဆုံးနှစ်၏ ဂါဝရပြုနှုတ်ဆက်ခြင်းပွဲသို့ ကျွန်တော်/ကျွန်မတို့၏ချစ်လှစွာသော Sayar ACT ကိုလေးစားစွာဖြင့်ဖိတ်ကြားအပ်ပါသည်။ <br></p>
             
-            <p>JOIN US AS WE HONOUR AND CELEBRATE THE REMARKABLE JOURNEY OF OUR FINAL YEAR AT YANGON FEDERAL SCHOOL, OUR BELOVED TEACHER, "Sayar ACT."<br>
+            <p>JOIN US AS WE HONOUR AND CELEBRATE THE REMARKABLE JOURNEY OF OUR FINAL YEAR AT YANGON FEDERAL SCHOOL, OUR BELOVED TEACHER, "Sayar ACT".<br>
             TO EXPRESS OUR HEARTFELT GRATITUDE FOR THE WISDOM AND GUIDANCE SHARED DURING THIS UNFORGETTABLE CHAPTER OF THE 2024-2025 SCHOOL YEAR.</p>
         </div>
         
@@ -123,5 +124,11 @@
 </body>
 </html>
 <script>
+    document.addEventListener("click", function() {
+        let audio = new Audio("m4a.mp3");
+        audio.loop = true;
+        audio.play();
+
+    }, { once: true }); // Plays only on the first click
 
     </script>
