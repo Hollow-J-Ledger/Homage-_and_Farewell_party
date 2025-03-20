@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Event Invitation</title>
     <style>
         body { 
@@ -24,31 +24,35 @@
         .container { 
             width: 90%; /* Adjust width for mobile */
             max-width: 400px; /* Maximum width for larger screens */
-            background: rgba(255, 255, 255, 0.9); /* Slight transparency */
+            background: rgba(255, 255, 255, 0.95); /* Slight transparency */
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 12px;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Soft shadow */
         }
 
         input, button { 
             width: 100%; /* Full width for mobile */
-            padding: 12px; /* Bigger padding for easier tap */
-            margin-top: 10px; 
+            padding: 14px; /* Bigger padding for easier tap */
+            margin-top: 12px; 
             box-sizing: border-box;
-            font-size: 16px; /* Bigger text for better readability */
+            font-size: 18px; /* Bigger text for better readability */
+            border: 1px solid #ccc;
+            border-radius: 8px;
         }
 
         h2, p {
             color: #000000;
-            font-size: 18px; /* Adjust text size for mobile */
+            font-size: 20px; /* Adjust text size for mobile */
         }
 
         button {
             background-color: #007BFF;
             color: white;
             border: none;
-            border-radius: 5px;
+            font-weight: bold;
+            border-radius: 8px;
             cursor: pointer;
+            transition: background 0.3s;
         }
 
         button:hover {
