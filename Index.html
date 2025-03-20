@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Event Invitation</title>
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body { 
             font-family: Arial, sans-serif; 
             text-align: center; 
@@ -19,6 +23,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            width: 100%;
+            overflow: hidden;
         }
 
         .container { 
@@ -32,17 +38,22 @@
 
         input, button { 
             width: 100%; /* Full width for mobile */
-            padding: 14px; /* Bigger padding for easier tap */
+            padding: 16px; /* Bigger padding for easier tap */
             margin-top: 12px; 
-            box-sizing: border-box;
             font-size: 18px; /* Bigger text for better readability */
             border: 1px solid #ccc;
             border-radius: 8px;
+            outline: none;
+        }
+
+        input {
+            text-align: center; /* Center text inside input */
         }
 
         h2, p {
             color: #000000;
             font-size: 20px; /* Adjust text size for mobile */
+            margin-bottom: 10px;
         }
 
         button {
@@ -58,10 +69,14 @@
         button:hover {
             background-color: #0056b3;
         }
+
+        button:active {
+            background-color: #004494;
+        }
     </style>
 </head>
 <body>
-    <audio autoplay loop>
+    <audio id="bg-music" loop>
         <source src="file_570.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -78,7 +93,7 @@
     <script>
         function rsvp() {
             let name = document.getElementById("name").value.trim();
-            
+
             // Mapping of names to specific webpages
             let guestPages = {
                 "Juicelay": "Card/juicelay_card.html",
@@ -96,33 +111,40 @@
                 "T Huk": "Card/my-T-Huk_card.html"
             };
 
+            // Generate allowed student codes from E-001/Freedom(E1) to E-055/Freedom(E1)
             let allowedCodes = [];
             for (let i = 1; i <= 55; i++) {
-                let code = E-${String(i).padStart(3, '0')}/Freedom(E1);
+                let code = `E-${String(i).padStart(3, '0')}/Freedom(E1)`;
                 allowedCodes.push(code);
             }
 
-            if (guestPages[name] || allowedCodes.includes(name)) {
-                document.getElementById("response").innerText = Thank you, ${name}! Your RSVP is confirmed. Redirecting...;
+            // Check if the input name matches a guest or student code
+            if (guestPages[name]) {
+                document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
                 setTimeout(() => {
-                    let page = guestPages[name] || "Card/freedome1_card.html";
-                    window.location.href = page; // Redirect to the assigned page
+                    window.location.href = guestPages[name]; // Redirect to the assigned page
+                }, 2000);
+            } else if (allowedCodes.includes(name)) {
+                document.getElementById("response").innerText = `Thank you, ${name}! Your RSVP is confirmed. Redirecting...`;
+                setTimeout(() => {
+                    window.location.href = "Card/freedome1_card.html"; // Redirect students
                 }, 2000);
             } else {
-                document.getElementById("response").innerText = "Sorry, your name is not on the guest list. Try with Freedom E1 Students if you are a student.";
+                document.getElementById("response").innerText = "Sorry, your name is not on the guest list. Try using a Freedom E1 student code if you are a student.";
                 setTimeout(() => {
                     window.location.href = "Index.html"; // Redirect after 5 seconds
                 }, 5000);
             }
         }
 
-        // Ensure audio plays on mobile
+        // Ensure audio plays on mobile after a user interaction
         document.addEventListener("click", function() {
-            let audio = new Audio("file_570.mp3");
-            audio.loop = true;
-            audio.play();
-            audio.volume = 0.20; // Set volume to 20%
-        }, { once: true }); // Plays only on the first click
+            let audio = document.getElementById("bg-music");
+            if (audio.paused) {
+                audio.volume = 0.20; // Set volume to 20%
+                audio.play().catch(error => console.log("Autoplay prevented:", error));
+            }
+        }, { once: true }); // Plays only on the first tap
     </script>
 </body>
 </html>
